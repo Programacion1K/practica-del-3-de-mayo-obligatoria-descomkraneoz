@@ -1,34 +1,35 @@
 import java.math.BigInteger;
 import java.util.Objects;
 import java.util.Random;
+import java.util.UUID;
 
 public class Contacto {
-    private final String nombre;
-    private final String apellidos;
+    private final String nombreCompleto;
     private final String codigo;
-    Random random = new Random();
+    UUID id = UUID.randomUUID();
 
-    public Contacto(String nombre, String apellidos) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.codigo = (new BigInteger(50, random).toString(32));
+    public Contacto(String nombre) {
+        this.nombreCompleto = nombre;
+        this.codigo = id.toString();
     }
 
     public String getNombre() {
-        return nombre;
-    }
-
-    public String getApellidos() {
-        return apellidos;
+        return nombreCompleto;
     }
 
     public String getCodigo() {
         return codigo;
     }
 
+    public String info() {
+        String salida = "";
+        salida += "El contacto: " + getNombre() + " tiene un id = " + getCodigo();
+        return salida;
+    }
+
     @Override
     public String toString() {
-        return codigo + " : " + apellidos + ", " + nombre;
+        return codigo + " : " + nombreCompleto;
     }
 
     @Override
@@ -45,8 +46,8 @@ public class Contacto {
     }
 
     public static void main(String[] args) {
-        Contacto c1 = new Contacto("Pepe", "Viyuela Martínez");
-        System.out.println(c1);
+        Contacto c1 = new Contacto("Pepe Viyuela Martínez");
+        System.out.println(c1.info());
     }
 }
 
