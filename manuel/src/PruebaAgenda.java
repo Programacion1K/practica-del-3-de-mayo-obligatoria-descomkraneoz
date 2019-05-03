@@ -15,6 +15,5 @@ public class PruebaAgenda {
         anaItems.add(anaItem2);
         miAgenda.anyadeItem(ana, anaItems);
 
-
     }
 }
