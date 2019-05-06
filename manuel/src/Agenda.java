@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Agenda implements Comparable {
+public class Agenda {
     Map<Contacto, List<Item>> listaAgenda = new TreeMap<>();
 
     public Map<Contacto, List<Item>> getListaAgenda() {
@@ -11,45 +11,51 @@ public class Agenda implements Comparable {
         listaAgenda.put(c, new ArrayList<>());
     }
 
-    public void anyadeItem(Contacto c, Item i) {
-        listaAgenda.get(c).add(i);
-    }
-
-    public void anyadeItem(Contacto c, List<Item> lista) {
+    public void anyadeContacto(Contacto c, List<Item> lista) {
         listaAgenda.put(c, lista);
     }
 
-    public String listadoContactos() {
-        String salida = "";
-        for (Contacto c : listaAgenda.keySet()
-        ) {
-            salida += c;
-        }
-        return salida;
+    public void anyadeItem(Contacto c, Item i) {
+        listaAgenda.get(c).add(i);
     }
-
-    public String listadoItems() {
-        String salida = "";
-        for (List<Item> i : listaAgenda.values()
-        ) {
-            salida += i;
-        }
-        return salida;
-    }
-
 
     public List<Item> listaItem(Contacto c) {
         return listaAgenda.get(c);
     }
 
-    /*public List<Contacto> listaInformacion(String nombreItem){
+    public List<Contacto> listadoContactos(){
+        List<Contacto> contactosAgenda=new LinkedList<>();
+        Iterator it=contactosAgenda.iterator();
+        Contacto c=new Contacto("");
 
-
-        return ;
-    }*/
-
-    @Override
-    public int compareTo(Object o) {
-        return 0;
+        while (it.hasNext()){
+            contactosAgenda.add(c);
+        }
+        return contactosAgenda;
     }
+
+    public String listadoAgenda() {
+        String salida = "";
+        for (Contacto c : listaAgenda.keySet()
+        ) {
+            salida += c.info()+": ";
+            for (Item i:listaItem(c)
+                 ) {
+                salida+=i.infoItem()+"\n";
+            }
+        }
+        return salida;
+    }
+
+    public List<Contacto> listaInformacion(String nombreItem){
+        Item itemComprobar=new Item(nombreItem,"");
+        List<Contacto> contactosConElItem=new ArrayList<>();
+        for (Contacto c:listaAgenda.keySet()){
+            if(listaAgenda.get(c).contains(itemComprobar)){
+                contactosConElItem.add(c);
+            }
+        }
+        return contactosConElItem;
+    }
+
 }

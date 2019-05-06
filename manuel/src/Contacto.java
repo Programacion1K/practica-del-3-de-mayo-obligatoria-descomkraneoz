@@ -1,20 +1,18 @@
-import java.math.BigInteger;
 import java.util.Objects;
-import java.util.Random;
 import java.util.UUID;
 
-public class Contacto {
-    private final String nombreCompleto;
+public class Contacto implements Comparable<Contacto>{
+    private final String nombre;
     private final String codigo;
     UUID id = UUID.randomUUID();
 
     public Contacto(String nombre) {
-        this.nombreCompleto = nombre;
+        this.nombre = nombre.substring(0,1).toUpperCase()+nombre.substring(1).toLowerCase();
         this.codigo = id.toString();
     }
 
     public String getNombre() {
-        return nombreCompleto;
+        return nombre;
     }
 
     public String getCodigo() {
@@ -23,13 +21,13 @@ public class Contacto {
 
     public String info() {
         String salida = "";
-        salida += "El contacto: " + getNombre() + " tiene un id = " + getCodigo();
+        salida += "Con el id = " + getCodigo()+ " tenemos el contacto: " + getNombre();
         return salida;
     }
 
     @Override
     public String toString() {
-        return codigo + " : " + nombreCompleto;
+        return codigo + " : " + nombre;
     }
 
     @Override
@@ -45,9 +43,18 @@ public class Contacto {
         return Objects.hash(codigo);
     }
 
+    @Override
+    public int compareTo(Contacto o){
+        return this.codigo.compareTo(o.codigo);
+    }
+
     public static void main(String[] args) {
-        Contacto c1 = new Contacto("Pepe Viyuela Martínez");
+        Contacto c1 = new Contacto("Pepe");
+        Contacto c2 = new Contacto("Manuel");
         System.out.println(c1.info());
+        System.out.println(c2.info());
+        System.out.println(c1.equals(c2));
+
     }
 }
 

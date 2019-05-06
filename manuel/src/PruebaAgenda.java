@@ -3,17 +3,21 @@ import java.util.List;
 
 public class PruebaAgenda {
     public static void main(String[] args) {
-        Agenda miAgenda = new Agenda();
-        Contacto ana = new Contacto("ana");
-        Item anaItem1 = new Item("Teléfono", "999999999");
-        Item anaItem2 = new Item("Dirección", "C/ Mayor, 8");
-
+        Agenda miAgenda=new Agenda();
+        Contacto ana=new Contacto("ana");
+        Contacto bea=new Contacto("bea");
+        Contacto clara=new Contacto("clara");
         miAgenda.anyadeContacto(ana);
-        miAgenda.anyadeItem(ana, anaItem1);
-        List<Item> anaItems = new ArrayList<>();
-        anaItems.add(anaItem1);
-        anaItems.add(anaItem2);
-        miAgenda.anyadeItem(ana, anaItems);
+        miAgenda.anyadeContacto(bea);
+        miAgenda.anyadeContacto(clara);
+        miAgenda.anyadeItem(ana,new Item("Teléfono","9999999"));
+        miAgenda.anyadeItem(ana,new Item("Dirección","C/ Mayor,8"));
+        miAgenda.anyadeItem(bea,new Item("Teléfono","6666666"));
+        miAgenda.anyadeItem(bea,new Item("Libro Favorito","El Quijote"));
+        miAgenda.anyadeItem(clara,new Item("Comida Favorita","Sushi"));
+
+        System.out.println(miAgenda.listadoAgenda());
+
 
     }
 }
