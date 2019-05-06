@@ -45,7 +45,7 @@ public class Item {
 
     public String infoItem() {
         String salida = "";
-        salida += "Detalles del contacto: " + nombreItem + ": " + informacionItem;
+        salida += "Detalles del contacto: " + nombreItem + "= " + informacionItem;
         return salida;
     }
 

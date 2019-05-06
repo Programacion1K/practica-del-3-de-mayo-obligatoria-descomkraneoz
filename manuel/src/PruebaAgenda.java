@@ -17,6 +17,15 @@ public class PruebaAgenda {
         miAgenda.anyadeItem(clara,new Item("Comida Favorita","Sushi"));
 
         System.out.println(miAgenda.listadoAgenda());
+        System.out.println("--------------------------------------");
+        System.out.println(miAgenda.listaItem(ana));
+        System.out.println("--------------------------------------");
+        System.out.println(miAgenda.buscarContactosPorItem("Teléfono"));
+        System.out.println("--------------------------------------");
+        System.out.println("--------------------------------------");
+        System.out.println(miAgenda.mostrarContactoPorItemBuscado());
+
+
 
 
     }

@@ -38,7 +38,7 @@ public class Agenda {
         String salida = "";
         for (Contacto c : listaAgenda.keySet()
         ) {
-            salida += c.info()+": ";
+            salida += c.info()+". ";
             for (Item i:listaItem(c)
                  ) {
                 salida+=i.infoItem()+"\n";
@@ -47,7 +47,7 @@ public class Agenda {
         return salida;
     }
 
-    public List<Contacto> listaInformacion(String nombreItem){
+    public List<Contacto> buscarContactosPorItem(String nombreItem){
         Item itemComprobar=new Item(nombreItem,"");
         List<Contacto> contactosConElItem=new ArrayList<>();
         for (Contacto c:listaAgenda.keySet()){
@@ -57,5 +57,4 @@ public class Agenda {
         }
         return contactosConElItem;
     }
-
 }
